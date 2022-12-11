@@ -12,7 +12,7 @@ const Char = () => {
       x: d => d.date,
       y: d => d.close,
       z: d => d.division,
-      yLabel: 'Rub',
+      // yLabel: 'Rub',
       width,
       height: 500,
       color: id => 1 == id ? 'red' : 'green',
