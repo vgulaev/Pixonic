@@ -1,12 +1,14 @@
-import { useState } from 'react'
+import { lazy } from 'react'
 // import reactLogo from './assets/react.svg'
 // import './App.css'
 
+const Char = lazy(() => import('./char'))
+
 function App() {
-  const [count, setCount] = useState(0)
-
-  return <>Hello!!!</>
-
+  return <>
+    Hello!!!
+    <Char/>
+  </>
 }
 
 export default App
