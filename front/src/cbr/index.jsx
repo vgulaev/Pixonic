@@ -1,9 +1,9 @@
-import {lazy} from 'react'
+import { lazy } from 'react'
 
 const Char = lazy(() => import('src/char'))
 
 const Cbr = () => {
-  console.log('Hello!')
+
   return <>
     <input type='date'/>
     <input type='date'/>

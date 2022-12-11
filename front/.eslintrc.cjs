@@ -31,10 +31,16 @@ module.exports = {
       'error',
       'single'
     ],
+    'object-curly-newline': 'error',
+    'object-curly-spacing': [
+      'error',
+      'always'
+    ],
     'semi': [
       'error',
       'never'
     ],
+    'space-before-blocks': 'error',
     'react/jsx-tag-spacing': [
       'error',
       {

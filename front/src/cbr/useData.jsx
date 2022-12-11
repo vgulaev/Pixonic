@@ -7,10 +7,14 @@ const defQueryParams = {
   refetchOnMount: false,
 }
 
-const queryFn = () => fetch('http://localhost:8000/getData')
-  .then(res => res.json())
 
 export const useData = () => {
+  var url = new URL('http://localhost:8000/getData')
+  url.searchParams.set('from', '01/01/2010')
+  url.searchParams.set('to', '01/01/2012')
+
+  const queryFn = () => fetch(url.toString())
+    .then(res => res.json())
 
   const query = useQuery({ queryKey: ['all'], queryFn, ...defQueryParams })
 

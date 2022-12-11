@@ -28,7 +28,6 @@ export const lineChart = (data, targetSVG, {
   strokeWidth = 1.5, // stroke width of line
   strokeOpacity, // stroke opacity of line
   mixBlendMode = 'multiply', // blend mode of lines
-  voronoi // show a Voronoi overlay? (for debugging)
 } = {}) => {
   // Compute values.
   const X = d3.map(data, x)
@@ -76,15 +75,6 @@ export const lineChart = (data, targetSVG, {
     .on('pointerleave', pointerleft)
     .on('touchstart', event => event.preventDefault())
 
-  // An optional Voronoi display (for fun).
-  if (voronoi) svg.append('path')
-    .attr('fill', 'none')
-    .attr('stroke', '#ccc')
-    .attr('d', d3.Delaunay
-      .from(I, i => xScale(X[i]), i => yScale(Y[i]))
-      .voronoi([0, 0, width, height])
-      .render())
-
   svg.append('g')
     .attr('transform', `translate(0,${height - marginBottom})`)
     .call(xAxis)
@@ -93,7 +83,7 @@ export const lineChart = (data, targetSVG, {
     .attr('transform', `translate(${marginLeft},0)`)
     .call(yAxis)
     .call(g => g.select('.domain').remove())
-    .call(voronoi ? () => {} : g => g.selectAll('.tick line').clone()
+    .call(g => g.selectAll('.tick line').clone()
       .attr('x2', width - marginLeft - marginRight)
       .attr('stroke-opacity', 0.1))
     .call(g => g.append('text')
@@ -135,7 +125,7 @@ export const lineChart = (data, targetSVG, {
     path.style('stroke', ([z]) => Z[i] === z ? null : '#ddd').filter(([z]) => Z[i] === z).raise()
     dot.attr('transform', `translate(${xScale(X[i])},${yScale(Y[i])})`)
     if (T) dot.select('text').text(T[i])
-    svg.property('value', O[i]).dispatch('input', {bubbles: true})
+    svg.property('value', O[i]).dispatch('input', { bubbles: true })
   }
 
   function pointerentered() {
@@ -147,8 +137,6 @@ export const lineChart = (data, targetSVG, {
     path.style('mix-blend-mode', mixBlendMode).style('stroke', null)
     dot.attr('display', 'none')
     svg.node().value = null
-    svg.dispatch('input', {bubbles: true})
+    svg.dispatch('input', { bubbles: true })
   }
-
-  return Object.assign(svg.node(), {value: null})
 }
