@@ -1,30 +1,14 @@
-import { lazy, useEffect } from 'react'
+import { lazy } from 'react'
+import { QueryClient, QueryClientProvider} from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
+const queryClient = new QueryClient()
 
-// import reactLogo from './assets/react.svg'
-// import './App.css'
+const Crb = lazy(() => import('src/cbr'))
 
-const Char = lazy(() => import('./char'))
-
-function App() {
-
-  useEffect(() => {
-    fetch('https://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=02/03/2001&date_req2=30/03/2001&VAL_NM_RQ=R01235', {
-      // mode: 'no-cors'
-      method: 'GET',
-      credentials: 'omit'
-    })
-      .then(res => res.text())
-      .then(res => console.log('********', res))
-      // .then(data => console.log(data))
-  }, [])
-  return <>
-    <input type='date'/>
-    <input type='date'/>
-    <div>
-      <Char/>
-    </div>
-  </>
-}
+const App = () => <QueryClientProvider client={queryClient}>
+  <Crb/>
+  <ReactQueryDevtools initialIsOpen={false}/>
+</QueryClientProvider>
 
 export default App

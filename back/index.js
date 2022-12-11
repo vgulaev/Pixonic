@@ -7,6 +7,10 @@ import {XMLParser} from 'fast-xml-parser'
 
 
 const respond = (req, res) => {
+  res.writeHead(200, {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*'
+  })
   https.get('https://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=02/03/2001&date_req2=30/03/2001&VAL_NM_RQ=R01235', cbr => {
     cbr.setEncoding('utf8')
     let rawData = ''
