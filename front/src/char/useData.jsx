@@ -11,7 +11,7 @@ export const fetchSeriesData = ({ index, from, to }) => {
   if (!from || !to || (from >= to)) return
   const seriesData = queryClient.getQueryData(['seriesData']) || []
 
-  const url = new URL('http://localhost:8000/getData')
+  const url = new URL(`http://${location.hostname}:8000/getData`)
 
   url.searchParams.set('from', formatDate(from))
   url.searchParams.set('to', formatDate(to))
