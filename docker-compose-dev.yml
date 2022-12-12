@@ -1,0 +1,13 @@
+version: "2"
+
+services:
+  backend:
+    container_name: backend
+    build: ./back
+    ports:
+      - 8000:8000
+  front:
+    container_name: front
+    build: ./front
+    ports:
+      - "80:80"

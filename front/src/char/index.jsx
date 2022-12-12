@@ -15,6 +15,7 @@ const Char = () => {
     const prepared = query.data.map((d, index) => d.Record.map((r, jj) => ({
       z: index,
       x: series.length > 1 ? jj : new Date(r.Date),
+      date: r.Date,
       Value: r.Value
     }))).flat()
 
@@ -25,6 +26,7 @@ const Char = () => {
       x: d => d.x,
       y: d => d.Value,
       z: d => d.z,
+      title: d => `${d.z}:${d.date}=${d.Value}`,
       color: id => series[id].color || 'red',
       yDomain,
     }

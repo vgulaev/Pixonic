@@ -1,6 +1,7 @@
 import { lazy } from 'react'
 
 const Char = lazy(() => import('src/char'))
+const Table = lazy(() => import('src/table'))
 const FromTo = lazy(() => import('./fromTo'))
 
 const Cbr = () => {
@@ -11,6 +12,9 @@ const Cbr = () => {
     </div>
     <div>
       <Char/>
+    </div>
+    <div>
+      <Table/>
     </div>
   </>
 }

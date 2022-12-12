@@ -21,7 +21,7 @@ const tryParseRawData = rawData => {
 
 const respond = (req, res) => {
   const { from, to } = url.parse(req.url, true).query
-
+  console.log(new Date, from, to)
   https.get(`https://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=${from}&date_req2=${to}&VAL_NM_RQ=R01235`, cbr => {
     cbr.setEncoding('utf8')
     let rawData = ''
