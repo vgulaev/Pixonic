@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { useData } from 'src/cbr/useData'
+import { useData } from './useData'
 import { lineChart } from './lineChar'
 
 const Char = () => {
@@ -7,7 +7,6 @@ const Char = () => {
   const query = useData()
 
   useEffect(() => {
-    // console.log('query.data?.Record?.length', query.data?.Record?.length)
     if (!query.data?.Record?.length) return
 
     const width = 1000

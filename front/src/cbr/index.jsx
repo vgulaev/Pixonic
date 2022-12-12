@@ -1,12 +1,14 @@
 import { lazy } from 'react'
 
 const Char = lazy(() => import('src/char'))
+const FromTo = lazy(() => import('./fromTo'))
 
 const Cbr = () => {
 
   return <>
-    <input type='date'/>
-    <input type='date'/>
+    <div>
+      <FromTo/>
+    </div>
     <div>
       <Char/>
     </div>
