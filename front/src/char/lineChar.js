@@ -65,7 +65,7 @@ export const lineChart = (data, targetSVG, {
   const svg = d3.select(targetSVG)
   svg.selectAll('*').remove() // Clear svg content
 
-  svg.attr('width', width)
+  svg.attr('width', '100%')
     .attr('height', height)
     .attr('viewBox', [0, 0, width, height])
     .attr('style', 'max-width: 100%; height: auto; height: intrinsic;')
